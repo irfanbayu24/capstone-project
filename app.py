@@ -1,44 +1,42 @@
+import pickle
 import streamlit as st
-import pandas as pd
-from statsmodels.tsa.holtwinters import ExponentialSmoothing
-import matplotlib.pyplot as plt
 
-# Load data
-uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
-if uploaded_file is not None:
-    data = pd.read_csv(uploaded_file)
+#membaca model
+fraud_model = pickle.load(open('FraudDetect_model.sav', 'rb'))
 
-    st.write("Data Preview:")
-    st.write(data.head())
+#judul web
+st.title('Fraud Transaction Detection Simple App')
 
-    # Preprocess data
-    data['step'] = pd.to_datetime(data['step'], unit='d', origin='unix')
-    data.set_index('step', inplace=True)
+col1, col2 = st.columns(2)
 
-    # Filter only fraud transactions
-    fraud_data = data[data['isFraud'] == 1]
+with col1 :
+    step = st.sidebar.selectbox('Step', [1])
+with col2 :
+    amount = st.sidebar.number_input('Amount', min_value=0.0, max_value=10000000.0)
+with col1 :
+    isFraud = st.sidebar.selectbox('Fraud', [0, 1])
+with col2 :
+    isFlaggedFraud = st.sidebar.selectbox('Flagged Fraud', [0, 1])
+with col1 :
+     oldbalanceOrg = st.sidebar.number_input('Old Balance Original', min_value=0.0, max_value=10000000.0)
+with col2 :
+     newbalanceOrig = st.sidebar.number_input('New Balance Original', min_value=0.0, max_value=10000000.0)
+with col1 :
+    oldbalanceDest = st.sidebar.number_input('Old Balance Destination', min_value=0.0, max_value=10000000.0)
+with col2 :
+    newbalanceDest = st.sidebar.number_input('New Balance Destination', min_value=0.0, max_value=10000000.0)
 
-    st.write("Fraud Data Preview:")
-    st.write(fraud_data.head())
 
-    # Build model
-    fraud_counts = fraud_data.resample('D').size()
-    model = ExponentialSmoothing(fraud_counts, seasonal='add', seasonal_periods=7)
-    model_fit = model.fit()
+#code untuk prediksi
+detect_fraud = ''
 
-    # Make predictions
-    future_steps = st.slider('Select number of future steps for prediction', 1, 30, 7)
-    forecast = model_fit.forecast(steps=future_steps)
+#tombol untuk memprediksi
+if st.button('Predict Fraud Transaction'):
+    fraud_prediction = fraud_model.predict([[step, amount, isFraud, isFlaggedFraud, oldbalanceOrg, newbalanceOrig, oldbalanceDest, newbalanceDest]])
 
-    st.write("Fraud Forecast:")
-    st.write(forecast)
+    if fraud_prediction[0] == 1:
+        detect_fraud = 'Transaction is not fraud'
+    else:
+        detect_fraud = 'Transaction is fraud'
 
-    # Plot the results
-    plt.figure(figsize=(10, 6))
-    plt.plot(fraud_counts, label='Observed')
-    plt.plot(forecast, label='Forecast', color='red')
-    plt.title('Fraud Detection Forecast')
-    plt.xlabel('Date')
-    plt.ylabel('Number of Fraudulent Transactions')
-    plt.legend()
-    st.pyplot(plt)
+st.success(detect_fraud)
