@@ -40,4 +40,7 @@ def main_page():
         else:
             detect_fraud = st.error('Transaction is fraud')
 
-    
+      # Tambahkan tombol logout
+    if st.button('Log Out'):
+        st.session_state.clear()
+        st.experimental_rerun()
