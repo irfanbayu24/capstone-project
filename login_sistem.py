@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Importing the main_page function from page_1.py
-from main.app import main_page
+from app import main_page
 
 # Function to check credentials
 def check_credentials(username, password):
