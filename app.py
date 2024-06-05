@@ -1,6 +1,5 @@
 import pickle
 import streamlit as st
-from sklearn.ensemble import RandomForestClassifier
 
 #membaca model
 with open('model_rfc.sav', 'rb') as model_file:
