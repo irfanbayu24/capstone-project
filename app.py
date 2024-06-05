@@ -1,5 +1,6 @@
 import pickle
 import streamlit as st
+from sklearn.ensemble import RandomForestClassifier
 
 #membaca model
 fraud_model = pickle.load(open('model_rfc.sav', 'rb'))
