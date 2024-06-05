@@ -1,9 +1,10 @@
-
-import streamlit as st
 import pickle
+import streamlit as st
+from sklearn.ensemble import RandomForestClassifier
 
 #membaca model
-fraud_model = pickle.load(open('model_rfc.sav', 'rb'))
+with open('model_rfc.sav', 'rb') as model_file:
+    fraud_model = pickle.load(model_file)
 
 #judul web
 def main_page():
