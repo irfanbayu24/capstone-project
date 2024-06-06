@@ -3,6 +3,7 @@ import streamlit as st
 # Importing the main_page function from page_1.py
 from app import main_page
 
+
 # Function to check credentials
 def check_credentials(username, password):
     correct_username = "admin"  # Replace with actual username
@@ -11,10 +12,17 @@ def check_credentials(username, password):
 
 # Function for login form
 def login():
-    st.title("Login Page")
+    st.title("Login Page Detection App")
 
+    # Display the image
+    st.image("dataset-cover.jpeg", use_column_width=True)
+    
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
+    
+    
+    
+        #check credentials    
 
     if st.button("Login"):
         if check_credentials(username, password):
