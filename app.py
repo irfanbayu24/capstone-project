@@ -15,7 +15,7 @@ def translate_text(text, dest_language):
 
 #judul web
 def main_page():
-    st.title('Fraud Transaction Detection Simple App')
+    st.title('Fraud Transaction Detection Simple App', dest_language)
 
     languages = {
         'English': 'en',
