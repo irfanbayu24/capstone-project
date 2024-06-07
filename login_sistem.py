@@ -12,7 +12,7 @@ def check_credentials(username, password):
 
 # Function for login form
 def login():
-    st.title("Login Page Detection App")
+    st.title("Login Page Fraud Detection App")
 
     # Display the image
     st.image("dataset-cover.jpeg", use_column_width=True)
