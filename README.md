@@ -64,7 +64,7 @@ Ikuti langkah-langkah di bawah ini untuk menginstal proyek ini di lingkungan lok
 
 Berikan panduan singkat tentang bagaimana cara menggunakan proyek ini setelah diinstal.
 
-1. Jalankan Script Utama
+1. Jalankan script utama
    login_sistem.py
    
 2. Ikuti instruksi yang muncul di terminal.
