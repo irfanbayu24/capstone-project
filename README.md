@@ -28,8 +28,8 @@ Target user disini yaitu :
 
 - Fitur login :
   User sementara dapat login dengan ketentuan sebagai berikut :
-  ## Username : Admin
-  ## Password : Admin
+  ## Username : admin
+  ## Password : admin
   
 - Terjemahan : Terdapat dua bahasa yaitu bahasa Inggris dan Indonesia.
 
