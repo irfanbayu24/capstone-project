@@ -9,7 +9,7 @@ Solusi ini bertujuan untuk mengurangi kerugian keuangan akibat penipuan dan memp
 - [Persyaratan Sistem](#persyaratan-sistem)
 - [Instalasi](#instalasi)
 - [Penggunaan](#penggunaan)
-- [Kontak](#kontak)
+- [Anggota Kelompok](#anggota-kelompok)
 
 ## Tentang Proyek
 
