@@ -69,7 +69,7 @@ Berikan panduan singkat tentang bagaimana cara menggunakan proyek ini setelah di
    
 2. Ikuti instruksi yang muncul di terminal.
 
-## Kontak Anggota
+## Anggota Kelompok
 
 Eli Muliani | Irfan Bayu Seno | Agita Muhammad R Sembiring | Derril Andiv Heriko | Dyah Probo Santy
 
